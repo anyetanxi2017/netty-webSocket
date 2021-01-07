@@ -31,6 +31,15 @@
            diskPersistent="true"
            diskExpiryThreadIntervalSeconds="600"
            memoryStoreEvictionPolicy="LRU"/>
+    <cache name="room"
+           maxElementsInMemory="10000"
+           eternal="true"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           overflowToDisk="true"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="600"
+           memoryStoreEvictionPolicy="LRU"/>
     <!--
         name：缓存名称。
         maxElementsInMemory: 表示缓存最大个数

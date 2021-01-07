@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author tiankong
+ * @date 2019/11/17 15:27
  */
 public class ThreadUtil {
     private static ExecutorService singleton;

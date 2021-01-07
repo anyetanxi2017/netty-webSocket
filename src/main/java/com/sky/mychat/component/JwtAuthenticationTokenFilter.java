@@ -17,6 +17,7 @@ import java.io.IOException;
 
 /**
  * @author tiankong
+ * @date 2019/11/17 16:10
  */
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Resource

@@ -1,10 +1,10 @@
 package com.sky.mychat.config;
 
+import com.sky.mychat.bo.CurrentUserDetails;
 import com.sky.mychat.component.JwtAuthenticationTokenFilter;
 import com.sky.mychat.component.RestAuthenticationEntryPoint;
 import com.sky.mychat.component.RestfulAccessDeniedHandler;
-import com.sky.mychat.pojo.bean.User;
-import com.sky.mychat.pojo.bo.CurrentUserDetails;
+import com.sky.mychat.entiry.UmsUserDo;
 import com.sky.mychat.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +26,7 @@ import javax.annotation.Resource;
 
 /**
  * @author tiankong
+ * @date 2019/11/17 16:17
  */
 @Configuration
 @EnableWebSecurity
@@ -57,7 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "v2/api-docs/**")
                 .permitAll()
                 .antMatchers("/user/login",
-                        "/user/register")
+                        "/user/register",
+                        "/user/test",
+                        "/system/**")
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)
                 .permitAll()
@@ -93,7 +96,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected UserDetailsService userDetailsService() {
         return username -> {
-            User user = userService.getByUsername(username);
+            UmsUserDo user = userService.getByUsername(username);
             if (user != null) {
                 return new CurrentUserDetails(user);
             }

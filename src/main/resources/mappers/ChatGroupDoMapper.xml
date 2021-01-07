@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mychat.mapper.ChatGroupDoMapper">
+    <resultMap id="BaseResultMap" type="com.sky.mychat.entiry.ChatGroupDo">
+        <!--@mbg.generated-->
+        <!--@Table chat_group-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+        <result column="max_number_of_people" jdbcType="SMALLINT" property="maxNumberOfPeople"/>
+        <result column="save_db" jdbcType="BOOLEAN" property="saveDb"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, group_name, icon, description, `type`, max_number_of_people, save_db, create_time,
+        modified_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from chat_group
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from chat_group
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sky.mychat.entiry.ChatGroupDo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into chat_group (group_name, icon, description,
+        `type`, max_number_of_people, save_db,
+        create_time, modified_time)
+        values (#{groupName,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+        #{type,jdbcType=TINYINT}, #{maxNumberOfPeople,jdbcType=SMALLINT}, #{saveDb,jdbcType=BOOLEAN},
+        #{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.sky.mychat.entiry.ChatGroupDo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into chat_group
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="groupName != null">
+                group_name,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="maxNumberOfPeople != null">
+                max_number_of_people,
+            </if>
+            <if test="saveDb != null">
+                save_db,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="groupName != null">
+                #{groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=TINYINT},
+            </if>
+            <if test="maxNumberOfPeople != null">
+                #{maxNumberOfPeople,jdbcType=SMALLINT},
+            </if>
+            <if test="saveDb != null">
+                #{saveDb,jdbcType=BOOLEAN},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sky.mychat.entiry.ChatGroupDo">
+        <!--@mbg.generated-->
+        update chat_group
+        <set>
+            <if test="groupName != null">
+                group_name = #{groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=TINYINT},
+            </if>
+            <if test="maxNumberOfPeople != null">
+                max_number_of_people = #{maxNumberOfPeople,jdbcType=SMALLINT},
+            </if>
+            <if test="saveDb != null">
+                save_db = #{saveDb,jdbcType=BOOLEAN},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sky.mychat.entiry.ChatGroupDo">
+        <!--@mbg.generated-->
+        update chat_group
+        set group_name = #{groupName,jdbcType=VARCHAR},
+        icon = #{icon,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR},
+        `type` = #{type,jdbcType=TINYINT},
+        max_number_of_people = #{maxNumberOfPeople,jdbcType=SMALLINT},
+        save_db = #{saveDb,jdbcType=BOOLEAN},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2019-11-18-->
+    <select id="getOneByGroupName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_chat2.chat_group
+        where group_name=#{groupName,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertUserGroupRelation">
+        insert into chat_user_group_relation(uid, gid) values
+        <foreach collection="userIdSet" item="uid" separator=",">
+            (#{uid},#{gid,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+    <select id="listGroupMembers" resultType="com.sky.mychat.dto.UserInfo">
+        select u.id userId, u.username, u.avatar
+        from ums_user u
+        left join chat_user_group_relation cugr on u.id = cugr.uid
+        where cugr.gid = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="listGroupByUserId" resultType="com.sky.mychat.entiry.ChatUserGroupRelationDo">
+        select *
+        from chat_user_group_relation where uid = #{uid};
+    </select>
+    <insert id="joinGroup">
+        insert into chat_user_group_relation(uid, gid) values
+        <foreach collection="userIdSet" item="userId" separator=",">
+            (#{userId},#{groupId})
+        </foreach>
+    </insert>
+    <select id="getUserGroupRelation" resultType="com.sky.mychat.entiry.ChatUserGroupRelationDo">
+        select *
+        from chat_user_group_relation where uid = #{userId} and gid = #{groupId};
+    </select>
+    <delete id="quitGroup">
+        delete from chat_user_group_relation where gid = #{groupId} and uid in
+        <foreach close=")" collection="userIdSet" item="userId" open="(" separator=",">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <!--auto generated by MybatisCodeHelper on 2019-11-19-->
+    <select id="getByAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chat_group
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=INTEGER}
+        </if>
+        <if test="groupName != null">
+            and group_name=#{groupName,jdbcType=VARCHAR}
+        </if>
+        <if test="icon != null">
+            and icon=#{icon,jdbcType=VARCHAR}
+        </if>
+        <if test="description != null">
+            and description=#{description,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            and `type`=#{type,jdbcType=TINYINT}
+        </if>
+        <if test="maxNumberOfPeople != null">
+            and max_number_of_people=#{maxNumberOfPeople,jdbcType=SMALLINT}
+        </if>
+        <if test="createTime != null">
+            and create_time=#{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="modifiedTime != null">
+            and modified_time=#{modifiedTime,jdbcType=TIMESTAMP}
+        </if>
+    </select>
+    <select id="getGroupByUserId" resultMap="BaseResultMap">
+        select *
+        from chat_group g
+        left join chat_user_group_relation cugr on g.id = cugr.gid where cugr.uid = #{uid};
+    </select>
+    <update id="settingGroupSaveDB">
+        update chat_group set save_db = #{type} where id = #{gid}
+    </update>
+</mapper>

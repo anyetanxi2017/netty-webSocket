@@ -3,7 +3,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/test_chat?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://localhost:3306/test_chat2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
       username: root
       password: 123456
       initial-size: 5
@@ -21,8 +21,6 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       filters: stat,wall
       aop-patterns: com.sky.mychat.server.*
-
-
       web-stat-filter:
         enabled: true
         url-pattern: /*
@@ -50,5 +48,4 @@ logging:
 webSocket:
   server:
     port: 9012
-mybatis:
-  mapper-locations: classpath:mappers/*.xml
+    heartbeat: 5

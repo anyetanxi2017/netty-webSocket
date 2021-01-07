@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mychat.mapper.ChatRoomDOMapper">
+    <resultMap id="BaseResultMap" type="com.sky.mychat.entiry.ChatRoomDo">
+        <!--@mbg.generated-->
+        <!--@Table chat_room-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="explain" jdbcType="VARCHAR" property="explain"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="is_hot" jdbcType="BOOLEAN" property="isHot"/>
+        <result column="room_type" jdbcType="TINYINT" property="roomType"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="save_db" jdbcType="BOOLEAN" property="saveDb"/>
+        <result column="no_say" jdbcType="BOOLEAN" property="noSay"/>
+        <result column="admins" jdbcType="VARCHAR" property="admins"/>
+        <result column="state" jdbcType="BOOLEAN" property="state"/>
+        <result column="join_type" jdbcType="BOOLEAN" property="joinType"/>
+        <result column="user_level" jdbcType="TINYINT" property="userLevel"/>
+        <result column="agent_level" jdbcType="TINYINT" property="agentLevel"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, `explain`, icon, is_hot, room_type, sort, save_db, no_say, admins, `state`,
+        join_type, user_level, agent_level
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from chat_room
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from chat_room
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sky.mychat.entiry.ChatRoomDo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into chat_room (`name`, `explain`, icon,
+        is_hot, room_type, sort,
+        save_db, no_say, admins,
+        `state`, join_type, user_level,
+        agent_level)
+        values (#{name,jdbcType=VARCHAR}, #{explain,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+        #{isHot,jdbcType=BOOLEAN}, #{roomType,jdbcType=TINYINT}, #{sort,jdbcType=INTEGER},
+        #{saveDb,jdbcType=BOOLEAN}, #{noSay,jdbcType=BOOLEAN}, #{admins,jdbcType=VARCHAR},
+        #{state,jdbcType=BOOLEAN}, #{joinType,jdbcType=BOOLEAN}, #{userLevel,jdbcType=TINYINT},
+        #{agentLevel,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.sky.mychat.entiry.ChatRoomDo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into chat_room
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="explain != null">
+                `explain`,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="isHot != null">
+                is_hot,
+            </if>
+            <if test="roomType != null">
+                room_type,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="saveDb != null">
+                save_db,
+            </if>
+            <if test="noSay != null">
+                no_say,
+            </if>
+            <if test="admins != null">
+                admins,
+            </if>
+            <if test="state != null">
+                `state`,
+            </if>
+            <if test="joinType != null">
+                join_type,
+            </if>
+            <if test="userLevel != null">
+                user_level,
+            </if>
+            <if test="agentLevel != null">
+                agent_level,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="explain != null">
+                #{explain,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isHot != null">
+                #{isHot,jdbcType=BOOLEAN},
+            </if>
+            <if test="roomType != null">
+                #{roomType,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="saveDb != null">
+                #{saveDb,jdbcType=BOOLEAN},
+            </if>
+            <if test="noSay != null">
+                #{noSay,jdbcType=BOOLEAN},
+            </if>
+            <if test="admins != null">
+                #{admins,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=BOOLEAN},
+            </if>
+            <if test="joinType != null">
+                #{joinType,jdbcType=BOOLEAN},
+            </if>
+            <if test="userLevel != null">
+                #{userLevel,jdbcType=TINYINT},
+            </if>
+            <if test="agentLevel != null">
+                #{agentLevel,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sky.mychat.entiry.ChatRoomDo">
+        <!--@mbg.generated-->
+        update chat_room
+        <set>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="explain != null">
+                `explain` = #{explain,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isHot != null">
+                is_hot = #{isHot,jdbcType=BOOLEAN},
+            </if>
+            <if test="roomType != null">
+                room_type = #{roomType,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="saveDb != null">
+                save_db = #{saveDb,jdbcType=BOOLEAN},
+            </if>
+            <if test="noSay != null">
+                no_say = #{noSay,jdbcType=BOOLEAN},
+            </if>
+            <if test="admins != null">
+                admins = #{admins,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                `state` = #{state,jdbcType=BOOLEAN},
+            </if>
+            <if test="joinType != null">
+                join_type = #{joinType,jdbcType=BOOLEAN},
+            </if>
+            <if test="userLevel != null">
+                user_level = #{userLevel,jdbcType=TINYINT},
+            </if>
+            <if test="agentLevel != null">
+                agent_level = #{agentLevel,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sky.mychat.entiry.ChatRoomDo">
+        <!--@mbg.generated-->
+        update chat_room
+        set `name` = #{name,jdbcType=VARCHAR},
+        `explain` = #{explain,jdbcType=VARCHAR},
+        icon = #{icon,jdbcType=VARCHAR},
+        is_hot = #{isHot,jdbcType=BOOLEAN},
+        room_type = #{roomType,jdbcType=TINYINT},
+        sort = #{sort,jdbcType=INTEGER},
+        save_db = #{saveDb,jdbcType=BOOLEAN},
+        no_say = #{noSay,jdbcType=BOOLEAN},
+        admins = #{admins,jdbcType=VARCHAR},
+        `state` = #{state,jdbcType=BOOLEAN},
+        join_type = #{joinType,jdbcType=BOOLEAN},
+        user_level = #{userLevel,jdbcType=TINYINT},
+        agent_level = #{agentLevel,jdbcType=TINYINT}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2019-11-20-->
+    <select id="selectByAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chat_room
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=INTEGER}
+        </if>
+        <if test="name != null">
+            and `name`=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="explain != null">
+            and `explain`=#{explain,jdbcType=VARCHAR}
+        </if>
+        <if test="icon != null">
+            and icon=#{icon,jdbcType=VARCHAR}
+        </if>
+        <if test="isHot != null">
+            and is_hot=#{isHot,jdbcType=BOOLEAN}
+        </if>
+        <if test="roomType != null">
+            and room_type=#{roomType,jdbcType=TINYINT}
+        </if>
+        <if test="sort != null">
+            and sort=#{sort,jdbcType=INTEGER}
+        </if>
+        <if test="saveDb != null">
+            and save_db=#{saveDb,jdbcType=BOOLEAN}
+        </if>
+        <if test="noSay != null">
+            and no_say=#{noSay,jdbcType=BOOLEAN}
+        </if>
+        <if test="admins != null">
+            and admins=#{admins,jdbcType=VARCHAR}
+        </if>
+        <if test="state != null">
+            and `state`=#{state,jdbcType=BOOLEAN}
+        </if>
+        <if test="joinType != null">
+            and join_type=#{joinType,jdbcType=BOOLEAN}
+        </if>
+        <if test="userLevel != null">
+            and user_level=#{userLevel,jdbcType=TINYINT}
+        </if>
+        <if test="agentLevel != null">
+            and agent_level=#{agentLevel,jdbcType=TINYINT}
+        </if>
+    </select>
+</mapper>

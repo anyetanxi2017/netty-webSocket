@@ -1,34 +1,17 @@
 package com.sky.mychat.service;
 
-import com.sky.mychat.pojo.bean.User;
-import com.sky.mychat.pojo.dto.LoginResult;
-import com.sky.mychat.pojo.dto.RegisterAndLoginParam;
+import com.sky.mychat.entiry.UmsUserDo;
 
 /**
  * @author tiankong
+ * @date 2019/11/17 16:11
  */
 public interface UserService {
     /**
-     * 根据用户名查询用户
+     * 分所用户名查询用户
      *
-     * @param username username
-     * @return User
+     * @param username 用户名
+     * @return 用户
      */
-    User getByUsername(String username);
-
-    /**
-     * 注册
-     *
-     * @param param param
-     * @return LoginResult
-     */
-    LoginResult register(RegisterAndLoginParam param);
-
-    /**
-     * 登录
-     *
-     * @param param param
-     * @return LoginResult
-     */
-    LoginResult login(RegisterAndLoginParam param);
+    UmsUserDo getByUsername(String username);
 }
